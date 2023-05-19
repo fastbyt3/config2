@@ -1,0 +1,28 @@
+{
+  "diagnostic.errorSign": "✖",
+  "diagnostic.warningSign": "⚠",
+  "diagnostic.infoSign": "ℹ",
+  "diagnostic.hintSign": "➤",
+  "diagnostic.checkCurrentLine": true,
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.work", "go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
+    },
+    "lua": {
+      "command": "/home/fastbyte/.config/coc/extensions/coc-lua-data/lua-language-server/bin/lua-language-server",
+      "filetypes": [ "lua" ],
+      "settings": {
+        "Lua": {
+          "diagnostics": {
+            "globals": [ "vim" ]
+          }
+        }
+      }
+    }
+  }
+}
