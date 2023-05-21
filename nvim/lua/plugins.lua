@@ -19,13 +19,13 @@ return require('packer').startup(function(use)
   use 'nvim-lua/popup.nvim'
 
   use {
-    'nvim-telescope/telescope.nvim', 
+    'nvim-telescope/telescope.nvim',
     tag = '0.1.1',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
   use {
-    'srcery-colors/srcery-vim', 
+    'srcery-colors/srcery-vim',
     as = 'srcery'
   }
 
@@ -87,6 +87,11 @@ return require('packer').startup(function(use)
   use {
     'fannheyward/telescope-coc.nvim',
     as = 'telescope-coc'
+  }
+
+  use {
+    'preservim/vim-markdown',
+    requires = {'godlygeek/tabular'}
   }
 
   use 'nanotech/jellybeans.vim'
