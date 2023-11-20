@@ -1,5 +1,8 @@
 format = """
-[  ](bold green)$directory(bold blue)$git_branch$git_status[❯](bold yellow)[❯](bold purple)[❯](bold blue) """
+[  ](bold green)$directory(bold blue)$git_branch$git_status[❯](bold yellow)[❯](bold purple)[❯](bold blue) 
+"""
+
+right_format = """$all"""
 
 scan_timeout = 60
 add_newline = true
@@ -24,10 +27,6 @@ map_symbol = true
 [git_branch]
 format = "[$symbol$branch]($style) "
 
-[package]
-format = "[$symbol$version]($style) "
-symbol = " "
-
 [python]
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 symbol = " "
@@ -44,8 +43,13 @@ format = "[${symbol}(${version} )]($style)"
 symbol = " "
 
 [rust]
-format = "[$symbol($version )]($style)"
+symbol = " "
 
 [golang]
 format = "[$symbol($version )]($style)"
-symbol = " "
+symbol = "🏎  "
+
+[package]
+format = "[$symbol$version]($style) "
+symbol = " "
+
