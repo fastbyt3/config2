@@ -1,54 +1,33 @@
+-- Pull in the wezterm API
 local wezterm = require 'wezterm'
 
-function font_with_fallback(name, params)
-  local names = {name, 'Hack Nerd Font'}
+-- This table will hold the configuration.
+local config = {}
 
-  return wezterm.font_with_fallback(names, params)
+-- In newer versions of wezterm, use the config_builder which will
+-- help provide clearer error messages
+if wezterm.config_builder then
+  config = wezterm.config_builder()
 end
 
-wezterm.on('plumb', function(window, pane)
-  local sel = window:get_selection_text_for_pane(pane)
-  local cwd = pane:get_current_working_dir()
+-- This is where you actually apply your config choices
 
-  if cwd == nil or sel == nil then
-    return
-  end
+-- For example, changing the color scheme:
+config.color_scheme = 'Catppuccin Mocha (Gogh)'
 
-  -- Extract current working directory from the file URI and make sure it
-  -- actually contains an directory.
-  cwd = cwd:gsub("^file://[^/]*", "")
-  if #cwd == 0 then
-    return
-  end
-
-  -- Trim whitespace from the selected text and make sure it's not empty.
-  sel = sel:gsub("^%s*(.-)%s*$", "%1")
-  if #sel == 0 then
-    return
-  end
-
-  local success, stdout, stderr = wezterm.run_child_process({
-    '/bin/sh',
-    wezterm.config_dir .. '/bin/plumb',
-    cwd,
-    sel
-  })
-
-  if not success and #stderr > 0 then
-    wezterm.log_error(stderr)
-  end
-end)
-
-return {
-  color_scheme = 'Gogh (Gogh)',
-  font = font_with_fallback('JetBrainsMono Nerd Font'),
-  font_dirs = {'fonts'},
-  font_rules = {
-    {
-      intensity = 'Bold',
-      font = font_with_fallback('JetBrainsMono Nerd Font'),
-    },
-  },
-  font_size = 10.5,
-  line_height = 1.1,
+config.font = wezterm.font_with_fallback {
+	'FiraCode Nerd Font',
+	'Noto Sans Symbols',
+	'Monaspace Radon',
+	'Symbols Nerd Font',
 }
+
+config.font_size = 11.0
+
+config.hide_tab_bar_if_only_one_tab = true
+
+config.enable_scroll_bar = true
+
+-- and finally, return the configuration to wezterm
+return config
+
