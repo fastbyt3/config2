@@ -28,6 +28,26 @@ config.hide_tab_bar_if_only_one_tab = true
 
 config.enable_scroll_bar = true
 
+config.keys = {
+  -- This will create a new split and run your default program inside it
+  {
+    key = 'RightArrow',
+    mods = 'CTRL|SHIFT|ALT',
+    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+  },
+  {
+    key = 'DownArrow',
+    mods = 'CTRL|SHIFT|ALT',
+    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+  },
+  {
+    key = 'w',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.CloseCurrentPane { confirm = false },
+  },
+}
+
+
 -- and finally, return the configuration to wezterm
 return config
 
