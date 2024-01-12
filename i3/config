@@ -88,7 +88,7 @@ bindcode $mod+Shift+90 	 move container to workspace  $ws10
 ######################################
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec wezterm
 bindsym $mod+Shift+Return exec thunar
 
 # kill focused window
@@ -184,7 +184,7 @@ bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
 
 # audio control
 bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioStop exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
@@ -328,7 +328,7 @@ exec --no-startup-id dunst
 #exec_always --no-startup-id autotiling
 
 # Autostart apps as you like
-exec --no-startup-id sleep 2 && alacritty
+exec --no-startup-id sleep 2 && wezterm
 exec --no-startup-id sleep 7 && firefox
 exec --no-startup-id sleep 10 && flameshot
 #exec --no-startup-id sleep 3 && thunar
